@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE faces-config PUBLIC 
+"-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN" 
+"http://java.sun.com/dtd/web-facesconfig_1_0.dtd">  
+<faces-config>
+<!-- 导航规则 -->
+<navigation-rule>
+<from-view-id>/regedit.jsp</from-view-id>
+<navigation-case>
+<from-outcome>regedit</from-outcome>
+<to-view-id>/index.jsp</to-view-id>
+<redirect/>
+</navigation-case>
+</navigation-rule>
+
+<!--前往注册页面  -->
+<navigation-rule>
+<from-view-id>/login.jsp</from-view-id>
+<navigation-case>
+<from-outcome>regedit</from-outcome>
+<to-view-id>/regedit.jsp</to-view-id>
+<redirect/>
+</navigation-case>
+</navigation-rule>
+
+<!--前往登录页面  -->
+<navigation-rule>
+<navigation-case>
+<from-outcome>login</from-outcome>
+<to-view-id>/login.jsp
+</to-view-id>
+<redirect/>
+</navigation-case>
+</navigation-rule>
+
+<!-- 登录导航 -->
+<navigation-rule>
+<from-view-id>/login.jsp</from-view-id>
+<navigation-case>
+<from-outcome>logFail</from-outcome>
+<to-view-id>/login.jsp</to-view-id>
+<redirect/>
+</navigation-case>
+<navigation-case>
+<from-outcome>logSuccess</from-outcome>
+<to-view-id>/index.jsp</to-view-id>
+<redirect/>
+</navigation-case>
+</navigation-rule>
+
+<!-- 修改导航 -->
+<navigation-rule>
+<navigation-case>
+<from-outcome>update</from-outcome>
+<to-view-id>/update.jsp</to-view-id>
+<redirect/>
+</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
+<from-view-id>/update.jsp</from-view-id>
+<navigation-case>
+<from-outcome>upSuccess</from-outcome>
+<to-view-id>/index.jsp</to-view-id>
+</navigation-case>
+</navigation-rule>
+
+
+<!--bean管理  -->
+<managed-bean>
+<managed-bean-name>user</managed-bean-name>
+<managed-bean-class>com.test.model.User</managed-bean-class>
+<managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+
+<!-- 验证确认密码 -->
+<validator>
+<validator-id>repassValid</validator-id>
+<validator-class>com.test.validator.PassValidator</validator-class>
+</validator>
+
+<!-- 验证验证码 -->
+<validator>
+<validator-id>ValidValidator</validator-id>
+<validator-class>com.test.validator.ValidValidator</validator-class>
+</validator>
+
+</faces-config>
